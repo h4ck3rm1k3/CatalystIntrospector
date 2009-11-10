@@ -1,0 +1,72 @@
+package gdb::Controller::get;
+
+use strict;
+use warnings;
+use parent 'Catalyst::Controller';
+use Data::Dumper;
+
+use gdb::Model::Firefox;
+
+=head1 NAME
+
+gdb::Controller::get - Catalyst Controller
+
+=head1 DESCRIPTION
+
+Catalyst Controller.
+
+=head1 METHODS
+
+=cut
+
+
+=head2 index
+
+=cut
+
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+    my $value  = $c->request->param( 'url' );
+    #c->req->snippets->[0]
+    if ($value)
+    {
+	$c->response->body('Matched gdb::Controller::get  ' .  $value .  'in get.'. join (";",Dumper([@_]) ));
+	
+#	if (!defined($c->stash->{mech}))
+#	{
+#	new2	
+#	    $c->model('Firefox') ; #=  gdb::Model::Firefox->new2($c); 
+#	    $c->response->body('created new mech  ' .  $value .  'in get.'. join (";",$c->model('Firefox') ));
+#	    
+#	}
+	$c->model('Firefox')->get($value);
+
+	$c->response->body(' mech now  ' .  $value .  ' dump .'. join (";", $c->model('Firefox') ));
+    }
+    else
+    {
+	$c->response->body(' pass url as parameter  ');
+    }
+}
+
+
+sub get  
+{
+    my ( $self, $c , $url) = @_;
+ 
+    $c->response->body('Matched gdb::Controller::get in get with url:' . $url);
+
+}
+
+=head1 AUTHOR
+
+James Michael DuPont,,,
+
+=head1 LICENSE
+
+This library is free software. You can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
+1;
