@@ -26,6 +26,7 @@ Catalyst Controller.
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
+
     my $value  = $c->request->param( 'url' );
     #c->req->snippets->[0]
     if ($value)

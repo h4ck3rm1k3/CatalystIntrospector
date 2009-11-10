@@ -1,13 +1,13 @@
-package gdb::Controller::xpath;
+package gdb::Controller::events;
 
 use strict;
 use warnings;
-use Data::Dumper;
 use parent 'Catalyst::Controller';
+use Data::Dumper;
 
 =head1 NAME
 
-gdb::Controller::xpath - Catalyst Controller
+gdb::Controller::events - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -25,18 +25,13 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
+    $c->response->body('Matched gdb::Controller::events in events.');
 
-    $c->response->body('Matched gdb::Controller::xpath in xpath.');
-
-    my $value  = $c->request->param( 'xpath' );
-
-    $c->response->body(
+$c->response->body(
 	Dumper(
-	    $c->model('Firefox')->xpath($value)
+	    $c->model('Firefox')->events()
 	)
 	);
-
-
 }
 
 

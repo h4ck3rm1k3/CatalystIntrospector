@@ -3,7 +3,7 @@ package gdb::Controller::links;
 use strict;
 use warnings;
 use parent 'Catalyst::Controller';
-
+use Data::Dumper;
 =head1 NAME
 
 gdb::Controller::links - Catalyst Controller
@@ -25,6 +25,16 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
     $c->response->body('Matched gdb::Controller::links in links.');
+
+#    my @content = ;
+
+    $c->response->body(
+	Dumper(
+	    $c->model('Firefox')->links()
+	)
+	);
+
+
 }
 
 

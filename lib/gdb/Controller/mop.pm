@@ -1,13 +1,12 @@
-package gdb::Controller::xpath;
+package gdb::Controller::mop;
 
 use strict;
 use warnings;
-use Data::Dumper;
 use parent 'Catalyst::Controller';
-
+use Data::Dumper;
 =head1 NAME
 
-gdb::Controller::xpath - Catalyst Controller
+gdb::Controller::mop - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -25,17 +24,9 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-
-    $c->response->body('Matched gdb::Controller::xpath in xpath.');
-
-    my $value  = $c->request->param( 'xpath' );
-
-    $c->response->body(
-	Dumper(
-	    $c->model('Firefox')->xpath($value)
-	)
-	);
-
+    $c->response->body('Matched gdb::Controller::mop in mop.');
+    my $content = 1;
+    $c->response->body(Dumper($content));
 
 }
 
