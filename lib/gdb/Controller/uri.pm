@@ -1,13 +1,12 @@
-package gdb::Controller::document;
+package gdb::Controller::uri;
 
 use strict;
 use warnings;
 use parent 'Catalyst::Controller';
-use Data::Dumper;
 
 =head1 NAME
 
-gdb::Controller::document - Catalyst Controller
+gdb::Controller::uri - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -25,11 +24,7 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched gdb::Controller::document in document.');
-    my $doc = $c->model('Firefox')->document();
-
-    print Dumper($doc);
-    
+    $c->response->body('Matched gdb::Controller::uri in uri.');
 }
 
 

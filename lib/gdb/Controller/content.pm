@@ -1,4 +1,4 @@
-package gdb::Controller::document;
+package gdb::Controller::content;
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use Data::Dumper;
 
 =head1 NAME
 
-gdb::Controller::document - Catalyst Controller
+gdb::Controller::content - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -25,11 +25,13 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched gdb::Controller::document in document.');
-    my $doc = $c->model('Firefox')->document();
+    $c->response->body('Matched gdb::Controller::content in content.');
 
-    print Dumper($doc);
-    
+    my $content = $c->model('Firefox')->content();
+    $c->response->body(Dumper($content));
+
+
+
 }
 
 
